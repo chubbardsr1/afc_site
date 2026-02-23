@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aksarben Financial Coaching</title>
+  <meta name="description" content="Practical financial coaching for individuals and couples—budgeting, debt payoff, emergency funds, and financial organization." />
+
+  <!-- Optional: system font stack (fast, no external calls) -->
+  <style>
+    :root{
+      --bg: #0b1220;
+      --card: #0f1a2e;
+      --muted: #8fa3c2;
+      --text: #e8eef9;
+      --accent: #3fa66b;
+      --accent2:#2b4a7a;
+      --border: rgba(255,255,255,.10);
+      --shadow: 0 16px 40px rgba(0,0,0,.35);
+      --radius: 16px;
+      --max: 1100px;
+    }
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(63,166,107,.25), transparent 55%),
+        radial-gradient(900px 500px at 85% 0%, rgba(43,74,122,.35), transparent 60%),
+        linear-gradient(180deg, #070c16, #050914 35%, #040714);
+      line-height: 1.5;
+    }
+    a{ color: inherit; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 22px 18px 70px; }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+      padding: 10px 0 18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      font-weight: 750; letter-spacing: .2px;
+    }
+    .logoMark{
+      width: 36px; height: 36px; border-radius: 10px;
+      background: linear-gradient(135deg, rgba(63,166,107,.95), rgba(43,74,122,.95));
+      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+      display:grid; place-items:center;
+      flex: 0 0 auto;
+    }
+    .logoMark svg{ width: 20px; height: 20px; opacity:.95; }
+    .navRight{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+    .chip{
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      text-decoration:none;
+      background: rgba(255,255,255,.03);
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(63,166,107,.35);
+      background: rgba(63,166,107,.15);
+      color: var(--text);
+      text-decoration:none;
+      font-weight: 650;
+      box-shadow: 0 10px 26px rgba(0,0,0,.25);
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      cursor: pointer;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(63,166,107,.20); border-color: rgba(63,166,107,.55); }
+    .btn.secondary{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      box-shadow:none;
+      font-weight: 600;
+    }
+    .btn.secondary:hover{ background: rgba(255,255,255,.07); }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: stretch;
+      margin-top: 10px;
+    }
+    .card{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .heroLeft{
+      position:relative;
+      overflow:hidden;
+    }
+    .heroLeft:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(600px 200px at 15% 10%, rgba(63,166,107,.18), transparent 55%);
+      pointer-events:none;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      margin-bottom: 14px;
+    }
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4.2vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -0.6px;
+    }
+    .tagline{
+      margin: 0 0 16px;
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 58ch;
+    }
+    .heroCtas{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .note{
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .heroRight{
+      display:flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .headshot{
+      display:flex;
+      gap: 14px;
+      align-items: center;
+    }
+    .photo{
+      width: 86px; height: 86px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      overflow:hidden;
+      flex: 0 0 auto;
+    }
+    .photo img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .who{
+      display:flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .who .name{ font-weight: 750; font-size: 16px; }
+    .who .role{ color: var(--muted); font-size: 13px; }
+    .miniList{
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display:grid;
+      gap: 10px;
+    }
+    .miniList li{
+      display:flex; gap: 10px; align-items:flex-start;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .miniList svg{
+      width: 18px; height: 18px; opacity:.9; flex: 0 0 auto; margin-top: 2px;
+      color: rgba(63,166,107,.9);
+    }
+
+    .section{ margin-top: 22px; }
+    .section h2{
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: -0.2px;
+    }
+    .section p{ margin: 0 0 12px; color: var(--muted); }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .col6{ grid-column: span 6; }
+    .col4{ grid-column: span 4; }
+    .col8{ grid-column: span 8; }
+    .col12{ grid-column: span 12; }
+
+    .bullets{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .bullets li{ margin: 6px 0; }
+
+    .pricing{
+      display:grid;
+      gap: 14px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .priceCard{
+      grid-column: span 4;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+      position: relative;
+      overflow:hidden;
+    }
+    .priceCard.featured{
+      border-color: rgba(63,166,107,.45);
+      background: linear-gradient(180deg, rgba(63,166,107,.14), rgba(255,255,255,.04));
+    }
+    .priceCard h3{ margin: 0 0 6px; font-size: 16px; }
+    .price{
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      margin: 0 0 6px;
+    }
+    .subprice{ color: var(--muted); font-size: 13px; margin: 0 0 12px; }
+    .priceCard ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .priceCard li{ margin: 6px 0; }
+    .badge{
+      position:absolute;
+      top: 12px; right: 12px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(63,166,107,.45);
+      background: rgba(63,166,107,.16);
+      color: rgba(232,238,249,.95);
+      font-weight: 650;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(12,1fr);
+      gap: 14px;
+    }
+    .step{
+      grid-column: span 4;
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+    .step .num{
+      width: 34px; height: 34px;
+      border-radius: 11px;
+      display:grid; place-items:center;
+      background: rgba(43,74,122,.28);
+      border: 1px solid rgba(255,255,255,.10);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .step h3{ margin: 0 0 6px; font-size: 16px; }
+    .step p{ margin: 0; color: var(--muted); font-size: 14px; }
+
+    .cta{
+      margin-top: 22px;
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(63,166,107,.35);
+      background: radial-gradient(700px 220px at 10% 10%, rgba(63,166,107,.20), transparent 60%),
+                  rgba(255,255,255,.04);
+      box-shadow: var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .cta h2{ margin: 0; font-size: 20px; }
+    .cta p{ margin: 6px 0 0; color: var(--muted); max-width: 70ch; }
+    .footer{
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero{ grid-template-columns: 1fr; }
+      .pricing{ grid-template-columns: repeat(12, 1fr); }
+      .priceCard{ grid-column: span 12; }
+      .steps .step{ grid-column: span 12; }
+      .grid .col6, .grid .col8, .grid .col4{ grid-column: span 12; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <!-- Top nav -->
+    <div class="nav">
+      <a class="brand" href="#top" aria-label="Aksarben Financial Coaching">
+        <span class="logoMark" aria-hidden="true">
+          <!-- simple icon -->
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 12.5l6 6L20 7" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>Aksarben Financial Coaching</span>
+      </a>
+
+      <div class="navRight">
+        <a class="chip" href="#services">What we do</a>
+        <a class="chip" href="#pricing">Pricing</a>
+        <a class="chip" href="#how">How it works</a>
+        <!-- Replace href later with your scheduler link -->
+        <a class="btn" href="#contact">Schedule a free consultation</a>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div id="top" class="hero">
+      <div class="card heroLeft">
+        <div class="kicker">Simple plans. Real progress.</div>
+        <h1>Practical financial coaching for real life.</h1>
+        <p class="tagline">
+          If you feel overwhelmed by bills, debt, or saving, I’ll help you get organized and build a clear plan you can actually follow.
+          <br /><br />
+          Budgeting, debt payoff planning, emergency funds, and financial organization — no product sales.
+        </p>
+
+        <div class="heroCtas">
+          <!-- Replace href later with your scheduler link -->
+          <a class="btn" href="#contact">Schedule a free consultation</a>
+          <a class="btn secondary" href="#pricing">View pricing</a>
+        </div>
+
+        <div class="note">
+          Serving Bellevue, Nebraska and remote clients via Zoom.
+        </div>
+      </div>
+
+      <div class="heroRight">
+        <div class="card">
+          <div class="headshot">
+            <div class="photo">
+              <!-- Replace this with your headshot file -->
+              <!-- Example: <img src="assets/headshot.jpg" alt="Christopher Ryan Hubbard, Sr. headshot"> -->
+              <img src="assets/headshot.jpg" alt="Christopher Ryan Hubbard, Sr" />
+            </div>
+            <div class="who">
+              <div class="name">Christopher Hubbard</div>
+              <div class="role">Financial Coach • Aksarben Financial Coaching</div>
+              <div class="role">Bellevue, Nebraska</div>
+            </div>
+          </div>
+
+          <ul class="miniList" style="margin-top:14px;">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2l3 7 7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+              Judgment-free coaching focused on clarity, organization, and steady progress.
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M21 8v13H3V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M1 8l11-6 11 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Great fit for individuals and couples who want a simple plan for their household finances.
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 12h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 4v16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              No investing advice, no product sales — just practical coaching and accountability.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Who this is for -->
+    <div class="section card" id="services">
+      <h2>Who this is for</h2>
+      <p>
+        This coaching is designed for people who want to reduce financial stress and build a clear plan — without complicated spreadsheets.
+      </p>
+      <div class="grid">
+        <div class="col6">
+          <ul class="bullets">
+            <li>You feel overwhelmed by bills or debt</li>
+            <li>You want a simple, realistic budget</li>
+            <li>You need help getting organized</li>
+            <li>You want an emergency plan and savings strategy</li>
+            <li>You’re ready for steady progress</li>
+          </ul>
+        </div>
+        <div class="col6">
+          <div class="card" style="margin:0; box-shadow:none; background: rgba(255,255,255,.03);">
+            <strong style="display:block; margin-bottom:6px;">What we work on together</strong>
+            <div style="color: var(--muted); font-size:14px;">
+              Budgeting • Debt payoff planning • Emergency funds • Bill/account organization • Simple systems and habits
+            </div>
+          </div>
+          <div class="note" style="margin-top:10px;">
+            You don’t need to be “good with money.” You just need a plan you can follow.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="pricing">
+
+  <!-- Foundations -->
+  <div class="priceCard featured">
+    <div class="badge">Best place to start</div>
+    <h3>Foundations</h3>
+    <div class="price">$179<span style="font-size:14px; font-weight:650; color:var(--muted);">/month</span></div>
+    <div class="subprice">Minimum 2-month commitment • 2 sessions/month</div>
+    <ul>
+      <li>Two 60-minute coaching sessions per month</li>
+      <li>Build a realistic, sustainable budget</li>
+      <li>Create a personalized debt payoff plan</li>
+      <li>Set an emergency fund target</li>
+      <li>Clear action steps and accountability</li>
+    </ul>
+  </div>
+
+  <!-- Maintenance -->
+  <div class="priceCard">
+    <h3>Maintenance</h3>
+    <div class="price">$99<span style="font-size:14px; font-weight:650; color:var(--muted);">/month</span></div>
+    <div class="subprice">1 session/month • ongoing support</div>
+    <ul>
+      <li>One 45-minute coaching session per month</li>
+      <li>Monthly accountability and plan review</li>
+      <li>Adjust as life changes</li>
+      <li>Ideal once your system is working</li>
+    </ul>
+  </div>
+
+  <!-- Break Glass -->
+  <div class="priceCard">
+    <h3>Break Glass Financial Snapshot</h3>
+    <div class="price">$399</div>
+    <div class="subprice">One-time • 90-minute session</div>
+    <ul>
+      <li>Complete household financial overview</li>
+      <li>Organized income, bills, and debt summary</li>
+      <li>Emergency action checklist</li>
+      <li>Written next-step recommendations</li>
+      <li>Ideal for couples and families</li>
+    </ul>
+  </div>
+
+</div>
+
+    <!-- How it works -->
+    <div class="section" id="how">
+      <div class="card">
+        <h2>How it works</h2>
+        <p>Clear steps. Practical guidance. A plan that fits your real life.</p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <h3>Free consultation</h3>
+            <p>We talk through your goals and what’s causing stress. If it’s a fit, we pick the best option.</p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <h3>Build your plan</h3>
+            <p>We create a simple budget, debt plan, and emergency fund target using your actual numbers.</p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <h3>Stay on track</h3>
+            <p>We review progress, make adjustments, and build sustainable habits month by month.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="section">
+      <div class="card">
+        <h2>About</h2>
+        <p>
+          Aksarben Financial Coaching exists to help individuals and couples reduce stress around money and build simple, practical financial plans.
+          This is not investment advice and there are no product sales — just education, organization, and coaching support.
+        </p>
+      </div>
+    </div>
+
+    <!-- Contact / CTA -->
+    <div class="cta" id="contact">
+      <div>
+        <h2>Ready to take the next step?</h2>
+        <p>
+          Schedule a free consultation or email me. We’ll talk through your situation and map out a clear next step.
+        </p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <!-- Replace this link later with Calendly/Zoho Bookings/etc -->
+        <a class="btn" href="https://outlook.office.com/book/AksarbenFinancialCoaching@aksarbenfinancialcoaching.com/?ismsaljsauthenabled" >
+          Schedule a free consultation
+        </a>
+        <a class="btn secondary" href="mailto:info@aksarbenfinancialcoaching.com">Email me</a>
+      </div>
+    </div>
+
+    <!-- Footer / Disclaimer -->
+    <div class="footer">
+      <strong>Disclaimer:</strong> Financial coaching is for educational and informational purposes only. I am not a licensed financial advisor, tax professional, or attorney. I do not provide investment, tax, or legal advice. Please consult a licensed professional before making financial decisions.
+      <div style="margin-top:10px;">
+        © <span id="y"></span> Aksarben Financial Coaching, LLC
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Small helper: current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
