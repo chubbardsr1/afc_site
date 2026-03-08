@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Chris Hubbard | Aksarben Financial Coaching</title>
+    <meta
+      name="description"
+      content="Learn more about Chris Hubbard and Aksarben Financial Coaching in Bellevue and Omaha, Nebraska. Practical financial coaching focused on budgeting, debt payoff planning, and financial organization."
+    />
+    <meta property="og:title" content="Aksarben Financial Coaching" />
+    <meta
+      property="og:description"
+      content="Financial coaching for budgeting, debt payoff planning, and financial organization in Omaha and Bellevue Nebraska."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aksarbenfinancialcoaching.com/" />
+    <meta
+      property="og:image"
+      content="https://aksarbenfinancialcoaching.com/logo3.png"
+    />
+    <link rel="icon" href="/favicon.ico" />
+    <link
+      rel="canonical"
+      href="https://aksarbenfinancialcoaching.com/about.html"
+    />
+
+    <style>
+      :root {
+        --bg: #f4f3ef;
+        --surface: #ffffff;
+        --surface2: #fbfbf9;
+        --text: #0f172a;
+        --muted: #475569;
+        --border: rgba(15, 23, 42, 0.1);
+        --shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+        --shadow2: 0 6px 14px rgba(15, 23, 42, 0.06);
+        --radius: 16px;
+        --max: 1040px;
+        --navy: #0b1f3a;
+        --navy2: #103157;
+        --accent: #1f6f4a;
+        --accentHover: #1a5f40;
+        --chipBg: rgba(15, 23, 42, 0.045);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Helvetica,
+          Arial;
+        color: var(--text);
+        background:
+          radial-gradient(
+            1000px 500px at 15% -10%,
+            rgba(16, 49, 87, 0.06),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 450px at 90% -5%,
+            rgba(31, 111, 74, 0.06),
+            transparent 60%
+          ),
+          var(--bg);
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      p {
+        margin: 0 0 12px;
+        color: var(--muted);
+      }
+      ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+      li {
+        margin: 7px 0;
+      }
+
+      .wrap {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 22px 16px 70px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(30px, 4vw, 44px);
+        line-height: 1.1;
+        letter-spacing: -0.6px;
+        color: var(--navy);
+        font-weight: 750;
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 22px;
+        letter-spacing: -0.2px;
+        color: var(--navy);
+      }
+      h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+        color: var(--navy);
+      }
+
+      .navShell {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(246, 247, 249, 0.78);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+      }
+      .nav {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 220px;
+      }
+      .brand img {
+        height: 44px;
+        width: auto;
+        display: block;
+      }
+      .brand .name {
+        font-weight: 750;
+        letter-spacing: -0.2px;
+        color: var(--navy);
+        line-height: 1.1;
+      }
+
+      .navRight {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .chip {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: var(--chipBg);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        color: var(--navy);
+        font-size: 13px;
+        font-weight: 650;
+      }
+      .chip:hover {
+        box-shadow: var(--shadow2);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(31, 111, 74, 0.35);
+        background: var(--accent);
+        color: white;
+        font-weight: 700;
+        box-shadow: var(--shadow2);
+      }
+      .btn:hover {
+        background: var(--accentHover);
+      }
+
+      .btn.secondary {
+        background: white;
+        color: var(--navy);
+        border: 1px solid var(--border);
+        box-shadow: none;
+        font-weight: 700;
+      }
+      .btn.secondary:hover {
+        box-shadow: var(--shadow2);
+      }
+
+      .section {
+        margin-top: 26px;
+        padding: 28px;
+        border-radius: var(--radius);
+        background: var(--surface);
+        border: 1px solid rgba(15, 23, 42, 0.06);
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+      }
+
+      .hero {
+        padding: 28px 24px;
+        background: linear-gradient(
+          180deg,
+          rgba(16, 49, 87, 0.05),
+          rgba(255, 255, 255, 1)
+        );
+      }
+
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #eef2f7;
+        border: 1px solid var(--border);
+        color: var(--navy2);
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+
+      .heroGrid {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 20px;
+        align-items: start;
+        margin-top: 18px;
+      }
+
+      .headshotCard,
+      .miniCard {
+        background: var(--surface2);
+        border-radius: 14px;
+        padding: 16px;
+        box-shadow: var(--shadow2);
+      }
+
+      .headshot {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 14px;
+        margin-bottom: 12px;
+        border: 1px solid rgba(15, 23, 42, 0.08);
+      }
+
+      .tagline {
+        font-size: 16px;
+        color: var(--muted);
+        max-width: 70ch;
+      }
+
+      .ctaRow {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+      }
+
+      .twoCol {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+      }
+      .twoCol > .section {
+        margin-top: 0;
+      }
+      .col6 {
+        grid-column: span 6;
+      }
+
+      .footer {
+        margin-top: 22px;
+        font-size: 12px;
+        color: var(--muted);
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+      }
+
+      @media (max-width: 900px) {
+        .heroGrid {
+          grid-template-columns: 1fr;
+        }
+        .col6 {
+          grid-column: span 12;
+        }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Aksarben Financial Coaching",
+        "url": "https://aksarbenfinancialcoaching.com",
+        "logo": "https://aksarbenfinancialcoaching.com/logo3.png",
+        "areaServed": "Omaha Nebraska",
+        "founder": "Chris Hubbard",
+        "description": "Financial coaching focused on budgeting, debt payoff planning, and financial organization."
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="navShell">
+      <div class="nav">
+        <a
+          class="brand"
+          href="index.html"
+          aria-label="Aksarben Financial Coaching home"
+        >
+          <img src="logo3.png" alt="Aksarben Financial Coaching logo" />
+          <div class="name">Aksarben Financial Coaching</div>
+        </a>
+
+        <div class="navRight">
+          <a class="chip" href="index.html">Home</a>
+          <a class="chip" href="about.html">About</a>
+          <a class="chip" href="index.html#pricing">Pricing</a>
+          <a class="btn" href="index.html#contact"
+            >Schedule a free consultation</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="section hero">
+        <div class="kicker">About Aksarben Financial Coaching</div>
+        <h1>About Chris Hubbard</h1>
+        <p class="tagline">
+          Practical financial structure rooted in clarity, accountability, and
+          steady progress.
+        </p>
+
+        <div class="heroGrid">
+          <div class="headshotCard">
+            <img
+              src="assets/headshot.jpg"
+              alt="Chris Hubbard - Financial Coach"
+              class="headshot"
+            />
+            <p>
+              I help steady-income individuals and couples build clear cash-flow
+              systems so they can feel organized and in control.
+            </p>
+          </div>
+
+          <div class="miniCard">
+            <p><strong>You’re not bad with money.</strong></p>
+            <p>
+              Most of the people I work with earn steady income. They’re
+              responsible. They work hard. They care about their families.
+            </p>
+            <p>
+              But their finances feel scattered. Bills get paid. Savings feels
+              inconsistent. Debt lingers. Progress isn’t clear.
+            </p>
+            <p>I help bring structure to that.</p>
+
+            <div class="ctaRow">
+              <a class="btn" href="index.html#contact"
+                >Schedule a free consultation</a
+              >
+              <a class="btn secondary" href="index.html">Back to home</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>My Story</h2>
+        <p>
+          I didn’t start Aksarben Financial Coaching to build a trendy financial
+          brand.
+        </p>
+        <p>
+          I started it because I’ve seen how much stress financial
+          disorganization creates — even in households that are doing well on
+          paper.
+        </p>
+        <p>
+          Earlier in my life, I experienced seasons where money felt reactive
+          instead of intentional. Income wasn’t necessarily the issue. Structure
+          was.
+        </p>
+        <p>
+          When the system improved — when cash flow became visible and decisions
+          were made with clarity — stress decreased.
+        </p>
+        <p>
+          That shift changed how I think about money. And it shaped how I coach
+          today.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>Professional Foundation</h2>
+        <p>
+          For more than two decades, my work has been connected to banking and
+          financial systems.
+        </p>
+        <p>
+          I began my career in banking in 1999 and later transitioned fully into
+          technology roles in 2002, much of that work tied directly to financial
+          platforms, system conversions, and infrastructure.
+        </p>
+        <p>That experience gave me strong working knowledge of:</p>
+        <ul>
+          <li>How different types of accounts function</li>
+          <li>How interest rates work</li>
+          <li>How banking systems are structured</li>
+          <li>How money actually moves behind the scenes</li>
+        </ul>
+        <p style="margin-top: 12px">
+          I’ve seen both sides — the customer side and the system side.
+        </p>
+        <p>
+          <strong>Financial success rarely comes from complexity.</strong> It
+          comes from structure, clear visibility, consistent execution, and
+          simple systems done well.
+        </p>
+      </div>
+
+      <div class="twoCol">
+        <div class="section col6">
+          <h2>Faith & Character</h2>
+          <p>My faith quietly shapes how I operate.</p>
+          <p>
+            It influences my view of stewardship, responsibility, and long-term
+            stability.
+          </p>
+          <p>
+            You won’t get sermons in a coaching session. You will get integrity,
+            consistency, and someone who takes your trust seriously.
+          </p>
+        </div>
+
+        <div class="section col6">
+          <h2>Family</h2>
+          <p>I’m a husband, a father, and a grandfather.</p>
+          <p>
+            I understand that financial decisions affect more than spreadsheets.
+            They affect stress levels, marriages, and the overall tone of a
+            home.
+          </p>
+          <p>
+            Outside of work, life is full. We have dogs, chickens, a bird, and a
+            cat — there’s always something moving.
+          </p>
+        </div>
+      </div>
+
+      <div class="twoCol">
+        <div class="section col6">
+          <h2>What I Do</h2>
+          <p>I provide educational financial coaching focused on:</p>
+          <ul>
+            <li>Budget development</li>
+            <li>Cash flow organization</li>
+            <li>Debt payoff structure</li>
+            <li>Emergency fund planning</li>
+            <li>Accountability</li>
+          </ul>
+          <p style="margin-top: 12px">
+            I do not provide investment advice, tax advice, legal advice, or
+            asset management.
+          </p>
+        </div>
+
+        <div class="section col6">
+          <h2>Who I Work Best With</h2>
+          <p>I work best with steady-income individuals and couples who:</p>
+          <ul>
+            <li>Want visibility</li>
+            <li>Are willing to look at numbers honestly</li>
+            <li>Value structure over hype</li>
+            <li>Are ready to implement</li>
+          </ul>
+          <p style="margin-top: 12px">
+            If you’re ready to build a clear financial structure, schedule a
+            conversation and let’s get to work.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer">
+        <strong>Disclaimer:</strong> Financial coaching is for educational and
+        informational purposes only. I am not a licensed financial advisor, tax
+        professional, or attorney. I do not provide investment, tax, or legal
+        advice. Please consult a licensed professional before making financial
+        decisions.
+        <div style="margin-top: 10px">
+          © <span id="y"></span> Aksarben Financial Coaching, LLC • Bellevue,
+          Nebraska
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear()
+    </script>
+  </body>
+</html>
