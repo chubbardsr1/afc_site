@@ -1,257 +1,611 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Love's Trip Guide</title>
     <style>
-      table {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-        margin-top: 20px;
+      :root {
+        --loves-red: #e21a22;
+        --text: #222;
+        --muted: #666;
+        --border: #e5e5e5;
+        --bg: #f7f7f7;
+        --card: #ffffff;
+        --planned-bg: #fff4cc;
+        --planned-border: #f2b600;
+        --dog-yes: #2e7d32;
+        --dog-no: #757575;
       }
-      td,
-      th {
-        border: 1px solid #dddddd;
-        text-align: left;
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.4;
+      }
+
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 1.4rem;
+        line-height: 1.2;
+      }
+
+      .subtitle {
+        margin: 0 0 16px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        background: #eee;
+      }
+
+      .badge-planned {
+        background: var(--planned-bg);
+        border: 1px solid var(--planned-border);
+      }
+
+      .badge-dog {
+        background: #edf7ee;
+        color: var(--dog-yes);
+      }
+
+      .stop-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .stop {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 14px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+      }
+
+      .stop.planned {
+        background: var(--planned-bg);
+        border: 2px solid var(--planned-border);
+      }
+
+      .stop.caution {
+        border-left: 6px solid var(--loves-red);
+      }
+
+      .top-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+
+      .location {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .store-number {
+        color: var(--muted);
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+
+      .planned-label {
+        display: inline-block;
+        margin-top: 6px;
+        padding: 4px 8px;
+        border-radius: 999px;
+        background: #fff;
+        border: 1px solid var(--planned-border);
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .details {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 12px;
+        margin: 10px 0 12px;
+      }
+
+      .detail {
+        background: #fafafa;
+        border-radius: 10px;
+        padding: 8px 10px;
+      }
+
+      .label {
+        display: block;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        margin-bottom: 2px;
+      }
+
+      .value {
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+
+      .dog-yes {
+        color: var(--dog-yes);
+      }
+
+      .dog-no {
+        color: var(--dog-no);
+      }
+
+      .price {
+        font-family: Consolas, Menlo, monospace;
+      }
+
+      .actions a {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        background: var(--loves-red);
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        padding: 12px 14px;
+        border-radius: 10px;
+      }
+
+      .actions a:hover {
+        opacity: 0.95;
+      }
+
+      .note,
+      .footnote {
+        margin-top: 16px;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .note {
+        background: #fff3f3;
+        border: 1px solid #f2c7c7;
+        color: #8a1c1c;
+        border-radius: 12px;
         padding: 12px;
       }
-      tr:nth-child(even) {
-        background-color: #fcfcfc;
-      }
-      th {
-        background-color: #e21a22;
-        color: white;
-        text-transform: uppercase;
-        font-size: 0.85rem;
-        letter-spacing: 1px;
-      }
-      .dog-park-yes {
-        color: #2e7d32;
-        font-weight: bold;
-      }
-      .dog-park-no {
-        color: #757575;
-      }
-      .price {
-        font-family: monospace;
-        font-weight: bold;
-        color: #333;
-      }
-      .dist {
-        color: #555;
-        font-style: italic;
-      }
-      a {
-        color: #e21a22;
-        text-decoration: none;
-        font-weight: bold;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      .caution {
-        color: #e21a22;
-        font-weight: bold;
-        margin-top: 20px;
+
+      @media (min-width: 700px) {
+        .wrap {
+          padding: 24px;
+        }
+
+        .stop-list {
+          gap: 14px;
+        }
       }
     </style>
   </head>
   <body>
-    <h2>I-80 Trip Guide: Love's Travel Stops (Omaha to Grove City)</h2>
+    <div class="wrap">
+      <h1>I-80 Trip Guide: Love's Travel Stops</h1>
+      <p class="subtitle">Omaha, NE → Grove City, PA</p>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Location</th>
-          <th>Store #</th>
-          <th>I-80 Exit</th>
-          <th>Dog Park</th>
-          <th>Unleaded</th>
-          <th>Next Love's</th>
-          <th>Store Page</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Shelby, IA</td>
-          <td>#426</td>
-          <td>34</td>
-          <td class="dog-park-yes">Yes</td>
-          <td class="price">$3.319</td>
-          <td class="dist">~91 miles</td>
-          <td>
+      <div class="legend">
+        <span class="badge badge-planned">Highlighted = Planned stops</span>
+        <span class="badge badge-dog">Dog park available</span>
+      </div>
+
+      <div class="stop-list">
+        <div class="stop">
+          <div class="top-row">
+            <div>
+              <div class="location">Shelby, IA</div>
+            </div>
+            <div class="store-number">Store #426</div>
+          </div>
+          <div class="details">
+            <div class="detail">
+              <span class="label">Exit</span><span class="value">34</span>
+            </div>
+            <div class="detail">
+              <span class="label">Dog Park</span
+              ><span class="value dog-yes">Yes</span>
+            </div>
+            <div class="detail">
+              <span class="label">Unleaded</span
+              ><span class="value price">$3.319</span>
+            </div>
+            <div class="detail">
+              <span class="label">Next Love's</span
+              ><span class="value">~91 miles</span>
+            </div>
+          </div>
+          <div class="actions">
             <a
               href="https://www.loves.com/locations/ia/shelby/loves-travel-stop-shelby-426"
               target="_blank"
+              rel="noopener noreferrer"
               >View Store</a
             >
-          </td>
-        </tr>
-        <tr>
-          <td>Clive, IA</td>
-          <td>#411</td>
-          <td>125</td>
-          <td class="dog-park-no">No</td>
-          <td class="price">$3.459</td>
-          <td class="dist">~43 miles</td>
-          <td>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="top-row">
+            <div>
+              <div class="location">Clive, IA</div>
+            </div>
+            <div class="store-number">Store #411</div>
+          </div>
+          <div class="details">
+            <div class="detail">
+              <span class="label">Exit</span><span class="value">125</span>
+            </div>
+            <div class="detail">
+              <span class="label">Dog Park</span
+              ><span class="value dog-no">No</span>
+            </div>
+            <div class="detail">
+              <span class="label">Unleaded</span
+              ><span class="value price">$3.459</span>
+            </div>
+            <div class="detail">
+              <span class="label">Next Love's</span
+              ><span class="value">~43 miles</span>
+            </div>
+          </div>
+          <div class="actions">
             <a
               href="https://www.loves.com/locations/ia/clive/loves-travel-stop-clive-411"
               target="_blank"
+              rel="noopener noreferrer"
               >View Store</a
             >
-          </td>
-        </tr>
-        <tr>
-          <td>Newton, IA</td>
-          <td>#361</td>
-          <td>168</td>
-          <td class="dog-park-yes">Yes</td>
-          <td class="price">$3.479</td>
-          <td class="dist">~141 miles</td>
-          <td>
+          </div>
+        </div>
+
+        <div class="stop planned">
+          <div class="top-row">
+            <div>
+              <div class="location">Newton, IA</div>
+              <div class="planned-label">Planned stop</div>
+            </div>
+            <div class="store-number">Store #361</div>
+          </div>
+          <div class="details">
+            <div class="detail">
+              <span class="label">Exit</span><span class="value">168</span>
+            </div>
+            <div class="detail">
+              <span class="label">Dog Park</span
+              ><span class="value dog-yes">Yes</span>
+            </div>
+            <div class="detail">
+              <span class="label">Unleaded</span
+              ><span class="value price">$3.479</span>
+            </div>
+            <div class="detail">
+              <span class="label">Next Love's</span
+              ><span class="value">~141 miles</span>
+            </div>
+          </div>
+          <div class="actions">
             <a
               href="https://www.loves.com/locations/ia/newton/loves-travel-stop-newton-361"
               target="_blank"
+              rel="noopener noreferrer"
               >View Store</a
             >
-          </td>
-        </tr>
-        <tr>
-          <td>Atkinson, IL</td>
-          <td>#766</td>
-          <td>27</td>
-          <td class="dog-park-yes">Yes</td>
-          <td class="price">$4.199</td>
-          <td class="dist">~54 miles</td>
-          <td>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="top-row">
+            <div>
+              <div class="location">Atkinson, IL</div>
+            </div>
+            <div class="store-number">Store #766</div>
+          </div>
+          <div class="details">
+            <div class="detail">
+              <span class="label">Exit</span><span class="value">27</span>
+            </div>
+            <div class="detail">
+              <span class="label">Dog Park</span
+              ><span class="value dog-yes">Yes</span>
+            </div>
+            <div class="detail">
+              <span class="label">Unleaded</span
+              ><span class="value price">$4.199</span>
+            </div>
+            <div class="detail">
+              <span class="label">Next Love's</span
+              ><span class="value">~54 miles</span>
+            </div>
+          </div>
+          <div class="actions">
             <a
               href="https://www.loves.com/locations/il/atkinson/loves-travel-stop-atkinson-766"
               target="_blank"
+              rel="noopener noreferrer"
               >View Store</a
             >
-          </td>
-        </tr>
-        <tr>
-          <td>Utica, IL</td>
-          <td>#351</td>
-          <td>81</td>
-          <td class="dog-park-no">No</td>
-          <td class="price">$3.999</td>
-          <td class="dist">~35 miles</td>
-          <td>
+          </div>
+        </div>
+
+        <div class="stop planned">
+          <div class="top-row">
+            <div>
+              <div class="location">Utica, IL</div>
+              <div class="planned-label">Planned stop</div>
+            </div>
+            <div class="store-number">Store #351</div>
+          </div>
+          <div class="details">
+            <div class="detail">
+              <span class="label">Exit</span><span class="value">81</span>
+            </div>
+            <div class="detail">
+              <span class="label">Dog Park</span
+              ><span class="value dog-no">No</span>
+            </div>
+            <div class="detail">
+              <span class="label">Unleaded</span
+              ><span class="value price">$3.999</span>
+            </div>
+            <div class="detail">
+              <span class="label">Next Love's</span
+              ><span class="value">~35 miles</span>
+            </div>
+          </div>
+          <div class="actions">
             <a
               href="https://www.loves.com/locations/il/utica/loves-travel-stop-utica-351"
               target="_blank"
+              rel="noopener noreferrer"
               >View Store</a
             >
-          </td>
-        </tr>
-        <tr>
-          <td>Morris, IL</td>
-          <td>#859</td>
-          <td>116</td>
-          <td class="dog-park-yes">Yes</td>
-          <td class="price">$4.099</td>
-          <td class="dist">~46 miles</td>
-          <td>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="top-row">
+            <div>
+              <div class="location">Morris, IL</div>
+            </div>
+            <div class="store-number">Store #859</div>
+          </div>
+          <div class="details">
+            <div class="detail">
+              <span class="label">Exit</span><span class="value">116</span>
+            </div>
+            <div class="detail">
+              <span class="label">Dog Park</span
+              ><span class="value dog-yes">Yes</span>
+            </div>
+            <div class="detail">
+              <span class="label">Unleaded</span
+              ><span class="value price">$4.099</span>
+            </div>
+            <div class="detail">
+              <span class="label">Next Love's</span
+              ><span class="value">~46 miles</span>
+            </div>
+          </div>
+          <div class="actions">
             <a
               href="https://www.loves.com/locations/il/morris/loves-travel-stop-morris-859"
               target="_blank"
+              rel="noopener noreferrer"
               >View Store</a
             >
-          </td>
-        </tr>
-        <tr>
-          <td>South Holland, IL</td>
-          <td>#606</td>
-          <td>73B</td>
-          <td class="dog-park-yes">Yes</td>
-          <td class="price">$4.299</td>
-          <td class="dist">~15 miles</td>
-          <td>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="top-row">
+            <div>
+              <div class="location">South Holland, IL</div>
+            </div>
+            <div class="store-number">Store #606</div>
+          </div>
+          <div class="details">
+            <div class="detail">
+              <span class="label">Exit</span><span class="value">73B</span>
+            </div>
+            <div class="detail">
+              <span class="label">Dog Park</span
+              ><span class="value dog-yes">Yes</span>
+            </div>
+            <div class="detail">
+              <span class="label">Unleaded</span
+              ><span class="value price">$4.299</span>
+            </div>
+            <div class="detail">
+              <span class="label">Next Love's</span
+              ><span class="value">~15 miles</span>
+            </div>
+          </div>
+          <div class="actions">
             <a
               href="https://www.loves.com/locations/il/south-holland/loves-travel-stop-south-holland-606"
               target="_blank"
+              rel="noopener noreferrer"
               >View Store</a
             >
-          </td>
-        </tr>
-        <tr>
-          <td>Gary, IN</td>
-          <td>#417</td>
-          <td>9</td>
-          <td class="dog-park-yes">Yes</td>
-          <td class="price">$3.899</td>
-          <td class="dist">~136 miles</td>
-          <td>
+          </div>
+        </div>
+
+        <div class="stop">
+          <div class="top-row">
+            <div>
+              <div class="location">Gary, IN</div>
+            </div>
+            <div class="store-number">Store #417</div>
+          </div>
+          <div class="details">
+            <div class="detail">
+              <span class="label">Exit</span><span class="value">9</span>
+            </div>
+            <div class="detail">
+              <span class="label">Dog Park</span
+              ><span class="value dog-yes">Yes</span>
+            </div>
+            <div class="detail">
+              <span class="label">Unleaded</span
+              ><span class="value price">$3.899</span>
+            </div>
+            <div class="detail">
+              <span class="label">Next Love's</span
+              ><span class="value">~136 miles</span>
+            </div>
+          </div>
+          <div class="actions">
             <a
               href="https://www.loves.com/locations/in/gary/loves-travel-stop-gary-417"
               target="_blank"
+              rel="noopener noreferrer"
               >View Store</a
             >
-          </td>
-        </tr>
-        <tr>
-          <td>Edon, OH</td>
-          <td>#748</td>
-          <td>2</td>
-          <td class="dog-park-yes">Yes</td>
-          <td class="price">$3.699</td>
-          <td class="dist">~62 miles</td>
-          <td>
+          </div>
+        </div>
+
+        <div class="stop planned">
+          <div class="top-row">
+            <div>
+              <div class="location">Edon, OH</div>
+              <div class="planned-label">Planned stop</div>
+            </div>
+            <div class="store-number">Store #748</div>
+          </div>
+          <div class="details">
+            <div class="detail">
+              <span class="label">Exit</span><span class="value">2</span>
+            </div>
+            <div class="detail">
+              <span class="label">Dog Park</span
+              ><span class="value dog-yes">Yes</span>
+            </div>
+            <div class="detail">
+              <span class="label">Unleaded</span
+              ><span class="value price">$3.699</span>
+            </div>
+            <div class="detail">
+              <span class="label">Next Love's</span
+              ><span class="value">~62 miles</span>
+            </div>
+          </div>
+          <div class="actions">
             <a
               href="https://www.loves.com/locations/oh/edon/loves-travel-stop-edon-748"
               target="_blank"
+              rel="noopener noreferrer"
               >View Store</a
             >
-          </td>
-        </tr>
-        <tr>
-          <td class="caution">**Perrysburg, OH</td>
-          <td>#456</td>
-          <td>I-280 1B</td>
-          <td class="dog-park-yes">Yes</td>
-          <td class="price">$3.649</td>
-          <td class="dist">~153 miles</td>
-          <td>
+          </div>
+        </div>
+
+        <div class="stop caution">
+          <div class="top-row">
+            <div>
+              <div class="location">Perrysburg, OH</div>
+            </div>
+            <div class="store-number">Store #456</div>
+          </div>
+          <div class="details">
+            <div class="detail">
+              <span class="label">Exit</span><span class="value">I-280 1B</span>
+            </div>
+            <div class="detail">
+              <span class="label">Dog Park</span
+              ><span class="value dog-yes">Yes</span>
+            </div>
+            <div class="detail">
+              <span class="label">Unleaded</span
+              ><span class="value price">$3.649</span>
+            </div>
+            <div class="detail">
+              <span class="label">Next Love's</span
+              ><span class="value">~153 miles</span>
+            </div>
+          </div>
+          <div class="actions">
             <a
               href="https://www.loves.com/locations/oh/perrysburg/loves-travel-stop-perrysburg-456"
               target="_blank"
+              rel="noopener noreferrer"
               >View Store</a
             >
-          </td>
-        </tr>
-        <tr>
-          <td>Hubbard, OH</td>
-          <td>#370</td>
-          <td>234</td>
-          <td class="dog-park-yes">Yes</td>
-          <td class="price">$3.659</td>
-          <td class="dist">Destination</td>
-          <td>
+          </div>
+        </div>
+
+        <div class="stop planned">
+          <div class="top-row">
+            <div>
+              <div class="location">Hubbard, OH</div>
+              <div class="planned-label">Planned stop</div>
+            </div>
+            <div class="store-number">Store #370</div>
+          </div>
+          <div class="details">
+            <div class="detail">
+              <span class="label">Exit</span><span class="value">234</span>
+            </div>
+            <div class="detail">
+              <span class="label">Dog Park</span
+              ><span class="value dog-yes">Yes</span>
+            </div>
+            <div class="detail">
+              <span class="label">Unleaded</span
+              ><span class="value price">$3.999</span>
+            </div>
+            <div class="detail">
+              <span class="label">Next Love's</span
+              ><span class="value">Destination</span>
+            </div>
+          </div>
+          <div class="actions">
             <a
               href="https://www.loves.com/locations/oh/hubbard/loves-travel-stop-hubbard-370"
               target="_blank"
+              rel="noopener noreferrer"
               >View Store</a
             >
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </div>
+        </div>
+      </div>
 
-    <p>
-      <small
-        ><strong>**Caution:</strong> The Perrysburg, OH location is accessible
-        via I-280, which may require a detour from the main I-80 route. Plan
-        accordingly if you intend to stop there.</small
-      >
-    </p>
+      <div class="note">
+        <strong>Caution:</strong> Perrysburg, OH is accessible via I-280 and may
+        require a detour from the main I-80 route.
+      </div>
 
-    <p>
-      <small
-        >Fuel prices sourced April 6, 2026. Distances are route-based
-        estimates.</small
-      >
-    </p>
+      <div class="footnote">
+        Fuel prices sourced April 7, 2026. Distances are route-based estimates.
+      </div>
+    </div>
   </body>
 </html>
